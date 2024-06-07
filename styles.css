@@ -9,15 +9,20 @@ body {
 h1 {
     text-align: center;
     padding: 20px;
-    background-color: #5411a7;
+    background-color: #002730;
     color: white;
     margin: 0;
+    border-bottom: 4px solid #5411a7;
 }
 
 .container {
     width: 80%;
     margin: auto;
     overflow: hidden;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
 
 h2 {
@@ -30,6 +35,8 @@ table {
     margin: 20px 0;
     font-size: 18px;
     text-align: left;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 table thead tr {
@@ -64,6 +71,8 @@ form {
     padding: 20px;
     border: 1px solid #ddd;
     background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 label {
@@ -84,8 +93,18 @@ button {
     color: white;
     cursor: pointer;
     border: none;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
     background-color: #45a049;
+}
+
+#reset-button {
+    background-color: #002730;
+    margin-top: 20px;
+}
+
+#reset-button:hover {
+    background-color: #5411a7;
 }
