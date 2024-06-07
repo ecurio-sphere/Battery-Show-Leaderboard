@@ -1,22 +1,29 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f1f3f4;
+    color: #002730;
     margin: 0;
     padding: 0;
 }
+
 h1 {
     text-align: center;
     padding: 20px;
-    background-color: #4CAF50;
+    background-color: #5411a7;
     color: white;
     margin: 0;
 }
+
 .container {
     width: 80%;
     margin: auto;
     overflow: hidden;
 }
+
+h2 {
+    color: #5411a7;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -24,24 +31,31 @@ table {
     font-size: 18px;
     text-align: left;
 }
+
 table thead tr {
-    background-color: #4CAF50;
+    background-color: #5411a7;
     color: white;
     text-align: left;
     font-weight: bold;
 }
+
 table th, table td {
     padding: 12px 15px;
+    border: 1px solid #ddd;
 }
+
 table tbody tr {
     border-bottom: 1px solid #dddddd;
 }
+
 table tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
 }
+
 table tbody tr:last-of-type {
-    border-bottom: 2px solid #4CAF50;
+    border-bottom: 2px solid #5411a7;
 }
+
 form {
     display: flex;
     flex-direction: column;
@@ -51,10 +65,12 @@ form {
     border: 1px solid #ddd;
     background: #fff;
 }
+
 label {
     margin-bottom: 10px;
     font-weight: bold;
 }
+
 select, input[type="number"], button {
     padding: 10px;
     margin-bottom: 20px;
@@ -62,13 +78,14 @@ select, input[type="number"], button {
     border-radius: 5px;
     font-size: 16px;
 }
+
 button {
-    background-color: #4CAF50;
+    background-color: #5411a7;
     color: white;
     cursor: pointer;
     border: none;
 }
+
 button:hover {
     background-color: #45a049;
 }
-
