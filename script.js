@@ -69,3 +69,24 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('You have added your points');
 
             document.getElementById('group').value = '';
+            document.getElementById('task').value = '';
+            document.getElementById('quantity').value = '';
+        }
+    });
+
+    document.getElementById('reset-button').addEventListener('click', function() {
+        const password = prompt('Please enter the password to reset scores:');
+        if (password === 'SphereEnergy') {
+            groups = [
+                { group: 1, rank: 1, points: 0, partyInvites: 0, brochures: 0, meetings: 0, demo: 0 },
+                { group: 2, rank: 2, points: 0, partyInvites: 0, brochures: 0, meetings: 0, demo: 0 },
+                { group: 3, rank: 3, points: 0, partyInvites: 0, brochures: 0, meetings: 0, demo: 0 },
+                { group: 'Tobi', rank: 4, points: 0, partyInvites: 0, brochures: 0, meetings: 0, demo: 0 },
+            ];
+            updateTables();
+            alert('Scores have been reset');
+        }
+    });
+
+    updateTables();
+});
