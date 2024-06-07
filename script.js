@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const groups = [
-        { group: 1, rank: 1, points: 6, partyInvites: 2, brochures: 0, meetings: 0, demo: 0 },
+    const groups = JSON.parse(localStorage.getItem('groups')) || [
+        { group: 1, rank: 1, points: 0, partyInvites: 0, brochures: 0, meetings: 0, demo: 0 },
         { group: 2, rank: 2, points: 0, partyInvites: 0, brochures: 0, meetings: 0, demo: 0 },
         { group: 3, rank: 3, points: 0, partyInvites: 0, brochures: 0, meetings: 0, demo: 0 },
         { group: 'Tobi', rank: 4, points: 0, partyInvites: 0, brochures: 0, meetings: 0, demo: 0 },
@@ -49,6 +49,8 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             taskTbody.appendChild(taskRow);
         });
+
+        localStorage.setItem('groups', JSON.stringify(groups));
     }
 
     document.getElementById('task-form').addEventListener('submit', function(event) {
@@ -72,5 +74,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    updateTables();
-});
+    document.getElementById('reset-button').addEventListener('click', function() {
+        const password = prompt('Please enter the password to
