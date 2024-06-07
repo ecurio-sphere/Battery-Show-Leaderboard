@@ -3,7 +3,22 @@ body {
     background-color: #f1f3f4;
     color: #002730;
     margin: 0;
-    padding: 1;
+    padding: 0;
+    position: relative;
+}
+
+.header-images {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.left-image, .right-image {
+    height: 50px; /* Adjust the height as needed */
+    width: auto;
 }
 
 h1 {
