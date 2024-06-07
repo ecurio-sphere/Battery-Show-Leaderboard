@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const groups = JSON.parse(localStorage.getItem('groups')) || [
+    let groups = JSON.parse(localStorage.getItem('groups')) || [
         { group: 1, rank: 1, points: 0, partyInvites: 0, brochures: 0, meetings: 0, demo: 0 },
         { group: 2, rank: 2, points: 0, partyInvites: 0, brochures: 0, meetings: 0, demo: 0 },
         { group: 3, rank: 3, points: 0, partyInvites: 0, brochures: 0, meetings: 0, demo: 0 },
@@ -75,4 +75,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('reset-button').addEventListener('click', function() {
-        const password = prompt('Please enter the password to
+        const password = prompt('Please enter the password to reset scores:');
+        if (password === 'SphereEnergy') {
+            groups = [
+                { group: 1, rank: 1, points: 0, partyInvites: 0, brochures: 0, meetings: 0, demo: 0 },
+                { group: 2, rank:
