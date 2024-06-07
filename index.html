@@ -35,4 +35,39 @@
                     <th>Rank</th>
                     <th>Points</th>
                     <th>Party invites distributed</th>
-                    <th>Brochures dist
+                    <th>Brochures distributed</th>
+                    <th>Meetings scheduled</th>
+                    <th>Demo presented</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated here by JavaScript -->
+            </tbody>
+        </table>
+        <h2>Add Completed Tasks</h2>
+        <form id="task-form">
+            <label for="group">Group:</label>
+            <select id="group" name="group" required>
+                <option value="">Select a group</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="Tobi">Tobi</option>
+            </select>
+            <label for="task">Task:</label>
+            <select id="task" name="task" required>
+                <option value="">Select a task</option>
+                <option value="partyInvites">Party invites distributed</option>
+                <option value="brochures">Brochures distributed</option>
+                <option value="meetings">Meetings scheduled</option>
+                <option value="demo">Demo presented</option>
+            </select>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" required>
+            <button type="submit">Add Activity</button>
+        </form>
+        <button id="reset-button">Reset Scores</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
