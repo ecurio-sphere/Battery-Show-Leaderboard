@@ -69,14 +69,3 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('You have added your points');
 
             document.getElementById('group').value = '';
-            document.getElementById('task').value = '';
-            document.getElementById('quantity').value = '';
-        }
-    });
-
-    document.getElementById('reset-button').addEventListener('click', function() {
-        const password = prompt('Please enter the password to reset scores:');
-        if (password === 'SphereEnergy') {
-            groups = [
-                { group: 1, rank: 1, points: 0, partyInvites: 0, brochures: 0, meetings: 0, demo: 0 },
-                { group: 2, rank:
