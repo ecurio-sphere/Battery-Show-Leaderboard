@@ -1,16 +1,44 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let groups = JSON.parse(localStorage.getItem('groups')) || [
-        { group: 1, rank: 1, points: 0, partyInvites: 0, brochures: 0, meetings: 0, demo: 0 },
-        { group: 2, rank: 2, points: 0, partyInvites: 0, brochures: 0, meetings: 0, demo: 0 },
-        { group: 3, rank: 3, points: 0, partyInvites: 0, brochures: 0, meetings: 0, demo: 0 },
-        { group: 'Tobi', rank: 4, points: 0, partyInvites: 0, brochures: 0, meetings: 0, demo: 0 },
-    ];
+    let groups = [];
 
-    const pointsPerTask = {
-        partyInvites: 3,
-        brochures: 5,
-        meetings: 7,
-        demo: 10
+    const fetchGroups = async () => {
+        const response = await fetch('https://leaderboard-backend.herokuapp.com/api/groups'); // Update URL with your Heroku app URL
+        groups = await response.json();
+        updateTables();
+    };
+
+    const updateGroups = async (data) => {
+        const response = await fetch('https://leaderboard-backend.herokuapp.com/api/update', { // Update URL with your Heroku app URL
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+        const result = await response.json();
+        if (result.success) {
+            await fetchGroups();
+            alert('You have added your points');
+        } else {
+            alert('Error updating points');
+        }
+    };
+
+    const resetGroups = async (password) => {
+        const response = await fetch('https://leaderboard-backend.herokuapp.com/api/reset', { // Update URL with your Heroku app URL
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ password }),
+        });
+        const result = await response.json();
+        if (result.success) {
+            await fetchGroups();
+            alert('Scores have been reset');
+        } else {
+            alert('Error resetting scores');
+        }
     };
 
     function updateRanks() {
@@ -49,44 +77,28 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             taskTbody.appendChild(taskRow);
         });
-
-        localStorage.setItem('groups', JSON.stringify(groups));
     }
 
-    document.getElementById('task-form').addEventListener('submit', function(event) {
+    document.getElementById('task-form').addEventListener('submit', async function(event) {
         event.preventDefault();
         const group = document.getElementById('group').value;
         const task = document.getElementById('task').value;
         const quantity = parseInt(document.getElementById('quantity').value);
 
         if (group && task && quantity) {
-            const groupData = groups.find(g => g.group == group);
-            groupData[task] += quantity;
-            groupData.points += quantity * pointsPerTask[task];
-
-            updateTables();
-
-            alert('You have added your points');
-
+            await updateGroups({ group, task, quantity });
             document.getElementById('group').value = '';
             document.getElementById('task').value = '';
             document.getElementById('quantity').value = '';
         }
     });
 
-    document.getElementById('reset-button').addEventListener('click', function() {
+    document.getElementById('reset-button').addEventListener('click', async function() {
         const password = prompt('Please enter the password to reset scores:');
-        if (password === 'SphereEnergy') {
-            groups = [
-                { group: 1, rank: 1, points: 0, partyInvites: 0, brochures: 0, meetings: 0, demo: 0 },
-                { group: 2, rank: 2, points: 0, partyInvites: 0, brochures: 0, meetings: 0, demo: 0 },
-                { group: 3, rank: 3, points: 0, partyInvites: 0, brochures: 0, meetings: 0, demo: 0 },
-                { group: 'Tobi', rank: 4, points: 0, partyInvites: 0, brochures: 0, meetings: 0, demo: 0 },
-            ];
-            updateTables();
-            alert('Scores have been reset');
+        if (password) {
+            await resetGroups(password);
         }
     });
 
-    updateTables();
+    fetchGroups();
 });
